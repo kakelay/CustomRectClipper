@@ -1,3 +1,5 @@
+// ignore_for_file: library_private_types_in_public_api
+
 import 'package:flutter/material.dart';
 
 void main() {
@@ -25,6 +27,8 @@ class MyApp extends StatelessWidget {
 }
 
 class HomePage extends StatefulWidget {
+  const HomePage({super.key});
+
   @override
   _HomePageState createState() => _HomePageState();
 }
@@ -38,30 +42,29 @@ class _HomePageState extends State<HomePage> {
           clipper: CustomRectClipper(),
           child: Container(
             height: 500,
-            width: 320,
-            // ignore: prefer_const_constructors
+            width: 300,
             decoration: BoxDecoration(
-              borderRadius: const BorderRadius.all(Radius.circular(50.0)),
+              borderRadius: BorderRadius.all(Radius.circular(50.0)),
               color: Colors.grey,
             ),
-            child: const Center(
+            child: Center(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   SizedBox(
-                    height: 70,
+                    height: 100,
                   ),
                   Text(
                     "RoundedDiagonalPathClipper()",
                   ),
                   SizedBox(
-                    height: 40,
+                    height: 50,
                   ),
                   Text(
                     "RoundedDiagonalPathClipper()",
                   ),
                   SizedBox(
-                    height: 40,
+                    height: 50,
                   ),
                   Text(
                     "RoundedDiagonalPathClipper()",
@@ -80,12 +83,12 @@ class CustomRectClipper extends CustomClipper<Path> {
   @override
   Path getClip(Size size) {
     Path path = new Path()
-      ..lineTo(0.0, 0.0)
+      ..lineTo(0.0, size.height)
       ..lineTo(size.width, size.height)
       ..lineTo(size.width, 0.0)
-      ..quadraticBezierTo(size.width - 50, 0.0, size.width - 60.0, -5.0)
+      ..quadraticBezierTo(size.width - 50, 0.0, size.width - 60.0, -10.0)
       ..lineTo(40.0, 150.0) // here you adjust the value as much as you nee
-      ..quadraticBezierTo(0.0, 180.0, 0.0, 220.0);
+      ..quadraticBezierTo(0.0, 180.0, 0.0, 230.0);
     return path;
   }
 
